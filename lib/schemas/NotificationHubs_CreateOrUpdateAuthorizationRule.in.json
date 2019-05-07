@@ -1,0 +1,99 @@
+{
+    "type": "object",
+    "properties": {
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "namespaceName": {
+            "required": true,
+            "type": "string"
+        },
+        "notificationHubName": {
+            "required": true,
+            "type": "string"
+        },
+        "authorizationRuleName": {
+            "required": true,
+            "type": "string"
+        },
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Parameters supplied to the CreateOrUpdate Namespace AuthorizationRules.",
+            "properties": {
+                "properties": {
+                    "description": "Properties of the Namespace AuthorizationRules.",
+                    "properties": {
+                        "claimType": {
+                            "description": "A string that describes the claim type",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "claimValue": {
+                            "description": "A string that describes the claim value",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "createdTime": {
+                            "description": "The created time for this rule",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "keyName": {
+                            "description": "A string that describes the authorization rule.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "modifiedTime": {
+                            "description": "The last modified time for this rule",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "primaryKey": {
+                            "description": "A base64-encoded 256-bit primary key for signing and validating the SAS token.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "revision": {
+                            "description": "The revision number for the rule",
+                            "readOnly": true,
+                            "type": "integer"
+                        },
+                        "rights": {
+                            "description": "The rights associated with the rule.",
+                            "items": {
+                                "enum": [
+                                    "Manage",
+                                    "Send",
+                                    "Listen"
+                                ],
+                                "type": "string",
+                                "x-ms-enum": {
+                                    "modelAsString": false,
+                                    "name": "AccessRights"
+                                }
+                            },
+                            "type": "array"
+                        },
+                        "secondaryKey": {
+                            "description": "A base64-encoded 256-bit primary key for signing and validating the SAS token.",
+                            "readOnly": true,
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "required": [
+                "properties"
+            ],
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

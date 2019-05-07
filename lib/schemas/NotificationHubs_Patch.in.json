@@ -1,0 +1,343 @@
+{
+    "type": "object",
+    "properties": {
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "namespaceName": {
+            "required": true,
+            "type": "string"
+        },
+        "notificationHubName": {
+            "required": true,
+            "type": "string"
+        },
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "allOf": [
+                {
+                    "properties": {
+                        "id": {
+                            "description": "Resource Id",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "location": {
+                            "description": "Resource location",
+                            "type": "string"
+                        },
+                        "name": {
+                            "description": "Resource name",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "sku": {
+                            "description": "The sku of the created namespace",
+                            "properties": {
+                                "capacity": {
+                                    "description": "The capacity of the resource",
+                                    "type": "integer"
+                                },
+                                "family": {
+                                    "description": "The Sku Family",
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "description": "Name of the notification hub sku",
+                                    "enum": [
+                                        "Free",
+                                        "Basic",
+                                        "Standard"
+                                    ],
+                                    "type": "string",
+                                    "x-ms-enum": {
+                                        "modelAsString": true,
+                                        "name": "SkuName"
+                                    }
+                                },
+                                "size": {
+                                    "description": "The Sku size",
+                                    "type": "string"
+                                },
+                                "tier": {
+                                    "description": "The tier of particular sku",
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "name"
+                            ],
+                            "type": "object"
+                        },
+                        "tags": {
+                            "additionalProperties": {
+                                "type": "string"
+                            },
+                            "description": "Resource tags",
+                            "type": "object"
+                        },
+                        "type": {
+                            "description": "Resource type",
+                            "readOnly": true,
+                            "type": "string"
+                        }
+                    },
+                    "x-ms-azure-resource": true,
+                    "type": "object"
+                }
+            ],
+            "description": "Parameters supplied to the patch NotificationHub operation.",
+            "properties": {
+                "properties": {
+                    "description": "Properties of the NotificationHub.",
+                    "x-ms-client-flatten": true,
+                    "properties": {
+                        "admCredential": {
+                            "description": "The AdmCredential of the created NotificationHub",
+                            "properties": {
+                                "properties": {
+                                    "description": "Properties of NotificationHub AdmCredential.",
+                                    "x-ms-client-flatten": true,
+                                    "properties": {
+                                        "authTokenUrl": {
+                                            "description": "The URL of the authorization token.",
+                                            "type": "string"
+                                        },
+                                        "clientId": {
+                                            "description": "The client identifier.",
+                                            "type": "string"
+                                        },
+                                        "clientSecret": {
+                                            "description": "The credential secret access key.",
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "apnsCredential": {
+                            "description": "The ApnsCredential of the created NotificationHub",
+                            "properties": {
+                                "properties": {
+                                    "description": "Properties of NotificationHub ApnsCredential.",
+                                    "x-ms-client-flatten": true,
+                                    "properties": {
+                                        "apnsCertificate": {
+                                            "description": "The APNS certificate.",
+                                            "type": "string"
+                                        },
+                                        "appId": {
+                                            "description": "The issuer (iss) registered claim key, whose value is your 10-character Team ID, obtained from your developer account",
+                                            "type": "string"
+                                        },
+                                        "appName": {
+                                            "description": "The name of the application",
+                                            "type": "string"
+                                        },
+                                        "certificateKey": {
+                                            "description": "The certificate key.",
+                                            "type": "string"
+                                        },
+                                        "endpoint": {
+                                            "description": "The endpoint of this credential.",
+                                            "type": "string"
+                                        },
+                                        "keyId": {
+                                            "description": "A 10-character key identifier (kid) key, obtained from your developer account",
+                                            "type": "string"
+                                        },
+                                        "thumbprint": {
+                                            "description": "The APNS certificate Thumbprint",
+                                            "type": "string"
+                                        },
+                                        "token": {
+                                            "description": "Provider Authentication Token, obtained through your developer account",
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "authorizationRules": {
+                            "description": "The AuthorizationRules of the created NotificationHub",
+                            "items": {
+                                "description": "SharedAccessAuthorizationRule properties.",
+                                "properties": {
+                                    "claimType": {
+                                        "description": "A string that describes the claim type",
+                                        "readOnly": true,
+                                        "type": "string"
+                                    },
+                                    "claimValue": {
+                                        "description": "A string that describes the claim value",
+                                        "readOnly": true,
+                                        "type": "string"
+                                    },
+                                    "createdTime": {
+                                        "description": "The created time for this rule",
+                                        "readOnly": true,
+                                        "type": "string"
+                                    },
+                                    "keyName": {
+                                        "description": "A string that describes the authorization rule.",
+                                        "readOnly": true,
+                                        "type": "string"
+                                    },
+                                    "modifiedTime": {
+                                        "description": "The last modified time for this rule",
+                                        "readOnly": true,
+                                        "type": "string"
+                                    },
+                                    "primaryKey": {
+                                        "description": "A base64-encoded 256-bit primary key for signing and validating the SAS token.",
+                                        "readOnly": true,
+                                        "type": "string"
+                                    },
+                                    "revision": {
+                                        "description": "The revision number for the rule",
+                                        "readOnly": true,
+                                        "type": "integer"
+                                    },
+                                    "rights": {
+                                        "description": "The rights associated with the rule.",
+                                        "items": {
+                                            "enum": [
+                                                "Manage",
+                                                "Send",
+                                                "Listen"
+                                            ],
+                                            "type": "string",
+                                            "x-ms-enum": {
+                                                "modelAsString": false,
+                                                "name": "AccessRights"
+                                            }
+                                        },
+                                        "type": "array"
+                                    },
+                                    "secondaryKey": {
+                                        "description": "A base64-encoded 256-bit primary key for signing and validating the SAS token.",
+                                        "readOnly": true,
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "type": "array"
+                        },
+                        "baiduCredential": {
+                            "description": "The BaiduCredential of the created NotificationHub",
+                            "properties": {
+                                "properties": {
+                                    "description": "Properties of NotificationHub BaiduCredential.",
+                                    "x-ms-client-flatten": true,
+                                    "properties": {
+                                        "baiduApiKey": {
+                                            "description": "Baidu Api Key.",
+                                            "type": "string"
+                                        },
+                                        "baiduEndPoint": {
+                                            "description": "Baidu Endpoint.",
+                                            "type": "string"
+                                        },
+                                        "baiduSecretKey": {
+                                            "description": "Baidu Secret Key",
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "gcmCredential": {
+                            "description": "The GcmCredential of the created NotificationHub",
+                            "properties": {
+                                "properties": {
+                                    "description": "Properties of NotificationHub GcmCredential.",
+                                    "x-ms-client-flatten": true,
+                                    "properties": {
+                                        "gcmEndpoint": {
+                                            "description": "The GCM endpoint.",
+                                            "type": "string"
+                                        },
+                                        "googleApiKey": {
+                                            "description": "The Google API key.",
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "mpnsCredential": {
+                            "description": "The MpnsCredential of the created NotificationHub",
+                            "properties": {
+                                "properties": {
+                                    "description": "Properties of NotificationHub MpnsCredential.",
+                                    "x-ms-client-flatten": true,
+                                    "properties": {
+                                        "certificateKey": {
+                                            "description": "The certificate key for this credential.",
+                                            "type": "string"
+                                        },
+                                        "mpnsCertificate": {
+                                            "description": "The MPNS certificate.",
+                                            "type": "string"
+                                        },
+                                        "thumbprint": {
+                                            "description": "The MPNS certificate Thumbprint",
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "name": {
+                            "description": "The NotificationHub name.",
+                            "type": "string"
+                        },
+                        "registrationTtl": {
+                            "description": "The RegistrationTtl of the created NotificationHub",
+                            "type": "string"
+                        },
+                        "wnsCredential": {
+                            "description": "The WnsCredential of the created NotificationHub",
+                            "properties": {
+                                "properties": {
+                                    "description": "Properties of NotificationHub WnsCredential.",
+                                    "x-ms-client-flatten": true,
+                                    "properties": {
+                                        "packageSid": {
+                                            "description": "The package ID for this credential.",
+                                            "type": "string"
+                                        },
+                                        "secretKey": {
+                                            "description": "The secret key.",
+                                            "type": "string"
+                                        },
+                                        "windowsLiveEndpoint": {
+                                            "description": "The Windows Live endpoint.",
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

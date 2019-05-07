@@ -1,0 +1,526 @@
+{
+    "title": "NotificationHubsManagementClient",
+    "description": "Azure NotificationHub client",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/azure.com/notificationhubs/2017-04-01/swagger.json",
+    "envVars": {
+        "OAUTH_CLIENT_ID": {
+            "description": "OAuth Client ID"
+        },
+        "OAUTH_CLIENT_SECRET": {
+            "description": "OAuth Client Secret"
+        }
+    },
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://management.azure.com/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "azure_auth": {
+                "label": "Azure Active Directory OAuth2 Flow",
+                "viewClass": "OAuthFieldView"
+            }
+        },
+        "oauth2": {
+            "client_id": "{{OAUTH_CLIENT_ID}}",
+            "client_secret": "{{OAUTH_CLIENT_SECRET}}",
+            "auth_uri": "https://login.microsoftonline.com/common/oauth2/authorize"
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "Operations_List": {
+            "main": "./lib/actions/Operations_List.js",
+            "title": "Lists all of the available NotificationHubs REST API operations.",
+            "description": "Lists all of the available NotificationHubs REST API operations.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Operations_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Namespaces_CheckAvailability": {
+            "main": "./lib/actions/Namespaces_CheckAvailability.js",
+            "title": "Checks the availability of the given service namespace across all Azure subscriptions. This is useful because the domain name is created based on the service namespace name.",
+            "description": "Checks the availability of the given service namespace across all Azure subscriptions. This is useful because the domain name is created based on the service namespace name.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Namespaces_CheckAvailability.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Namespaces_ListAll": {
+            "main": "./lib/actions/Namespaces_ListAll.js",
+            "title": "Lists all the available namespaces within the subscription irrespective of the resourceGroups.",
+            "description": "Lists all the available namespaces within the subscription irrespective of the resourceGroups.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Namespaces_ListAll.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Namespaces_List": {
+            "main": "./lib/actions/Namespaces_List.js",
+            "title": "Lists the available namespaces within a resourceGroup.",
+            "description": "Lists the available namespaces within a resourceGroup.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Namespaces_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Namespaces_Delete": {
+            "main": "./lib/actions/Namespaces_Delete.js",
+            "title": "Deletes an existing namespace. This operation also removes all associated notificationHubs under the namespace.",
+            "description": "Deletes an existing namespace. This operation also removes all associated notificationHubs under the namespace.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Namespaces_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Namespaces_Get": {
+            "main": "./lib/actions/Namespaces_Get.js",
+            "title": "Returns the description for the specified namespace.",
+            "description": "Returns the description for the specified namespace.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Namespaces_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Namespaces_Patch": {
+            "main": "./lib/actions/Namespaces_Patch.js",
+            "title": "Patches the existing namespace",
+            "description": "Patches the existing namespace",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Namespaces_Patch.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Namespaces_CreateOrUpdate": {
+            "main": "./lib/actions/Namespaces_CreateOrUpdate.js",
+            "title": "Creates/Updates a service namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.",
+            "description": "Creates/Updates a service namespace. Once created, this namespace's resource manifest is immutable. This operation is idempotent.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Namespaces_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Namespaces_ListAuthorizationRules": {
+            "main": "./lib/actions/Namespaces_ListAuthorizationRules.js",
+            "title": "Gets the authorization rules for a namespace.",
+            "description": "Gets the authorization rules for a namespace.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Namespaces_ListAuthorizationRules.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Namespaces_DeleteAuthorizationRule": {
+            "main": "./lib/actions/Namespaces_DeleteAuthorizationRule.js",
+            "title": "Deletes a namespace authorization rule",
+            "description": "Deletes a namespace authorization rule",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Namespaces_DeleteAuthorizationRule.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Namespaces_GetAuthorizationRule": {
+            "main": "./lib/actions/Namespaces_GetAuthorizationRule.js",
+            "title": "Gets an authorization rule for a namespace by name.",
+            "description": "Gets an authorization rule for a namespace by name.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Namespaces_GetAuthorizationRule.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Namespaces_CreateOrUpdateAuthorizationRule": {
+            "main": "./lib/actions/Namespaces_CreateOrUpdateAuthorizationRule.js",
+            "title": "Creates an authorization rule for a namespace",
+            "description": "Creates an authorization rule for a namespace",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Namespaces_CreateOrUpdateAuthorizationRule.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Namespaces_ListKeys": {
+            "main": "./lib/actions/Namespaces_ListKeys.js",
+            "title": "Gets the Primary and Secondary ConnectionStrings to the namespace ",
+            "description": "Gets the Primary and Secondary ConnectionStrings to the namespace ",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Namespaces_ListKeys.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Namespaces_RegenerateKeys": {
+            "main": "./lib/actions/Namespaces_RegenerateKeys.js",
+            "title": "Regenerates the Primary/Secondary Keys to the Namespace Authorization Rule",
+            "description": "Regenerates the Primary/Secondary Keys to the Namespace Authorization Rule",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Namespaces_RegenerateKeys.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "NotificationHubs_CheckNotificationHubAvailability": {
+            "main": "./lib/actions/NotificationHubs_CheckNotificationHubAvailability.js",
+            "title": "Checks the availability of the given notificationHub in a namespace.",
+            "description": "Checks the availability of the given notificationHub in a namespace.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/NotificationHubs_CheckNotificationHubAvailability.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "NotificationHubs_List": {
+            "main": "./lib/actions/NotificationHubs_List.js",
+            "title": "Lists the notification hubs associated with a namespace.",
+            "description": "Lists the notification hubs associated with a namespace.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/NotificationHubs_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "NotificationHubs_Delete": {
+            "main": "./lib/actions/NotificationHubs_Delete.js",
+            "title": "Deletes a notification hub associated with a namespace.",
+            "description": "Deletes a notification hub associated with a namespace.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/NotificationHubs_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "NotificationHubs_Get": {
+            "main": "./lib/actions/NotificationHubs_Get.js",
+            "title": "Lists the notification hubs associated with a namespace.",
+            "description": "Lists the notification hubs associated with a namespace.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/NotificationHubs_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "NotificationHubs_Patch": {
+            "main": "./lib/actions/NotificationHubs_Patch.js",
+            "title": "Patch a NotificationHub in a namespace.",
+            "description": "Patch a NotificationHub in a namespace.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/NotificationHubs_Patch.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "NotificationHubs_CreateOrUpdate": {
+            "main": "./lib/actions/NotificationHubs_CreateOrUpdate.js",
+            "title": "Creates/Update a NotificationHub in a namespace.",
+            "description": "Creates/Update a NotificationHub in a namespace.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/NotificationHubs_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "NotificationHubs_ListAuthorizationRules": {
+            "main": "./lib/actions/NotificationHubs_ListAuthorizationRules.js",
+            "title": "Gets the authorization rules for a NotificationHub.",
+            "description": "Gets the authorization rules for a NotificationHub.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/NotificationHubs_ListAuthorizationRules.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "NotificationHubs_DeleteAuthorizationRule": {
+            "main": "./lib/actions/NotificationHubs_DeleteAuthorizationRule.js",
+            "title": "Deletes a notificationHub authorization rule",
+            "description": "Deletes a notificationHub authorization rule",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/NotificationHubs_DeleteAuthorizationRule.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "NotificationHubs_GetAuthorizationRule": {
+            "main": "./lib/actions/NotificationHubs_GetAuthorizationRule.js",
+            "title": "Gets an authorization rule for a NotificationHub by name.",
+            "description": "Gets an authorization rule for a NotificationHub by name.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/NotificationHubs_GetAuthorizationRule.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "NotificationHubs_CreateOrUpdateAuthorizationRule": {
+            "main": "./lib/actions/NotificationHubs_CreateOrUpdateAuthorizationRule.js",
+            "title": "Creates/Updates an authorization rule for a NotificationHub",
+            "description": "Creates/Updates an authorization rule for a NotificationHub",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/NotificationHubs_CreateOrUpdateAuthorizationRule.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "NotificationHubs_ListKeys": {
+            "main": "./lib/actions/NotificationHubs_ListKeys.js",
+            "title": "Gets the Primary and Secondary ConnectionStrings to the NotificationHub ",
+            "description": "Gets the Primary and Secondary ConnectionStrings to the NotificationHub ",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/NotificationHubs_ListKeys.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "NotificationHubs_RegenerateKeys": {
+            "main": "./lib/actions/NotificationHubs_RegenerateKeys.js",
+            "title": "Regenerates the Primary/Secondary Keys to the NotificationHub Authorization Rule",
+            "description": "Regenerates the Primary/Secondary Keys to the NotificationHub Authorization Rule",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/NotificationHubs_RegenerateKeys.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "NotificationHubs_DebugSend": {
+            "main": "./lib/actions/NotificationHubs_DebugSend.js",
+            "title": "test send a push notification",
+            "description": "test send a push notification",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/NotificationHubs_DebugSend.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "NotificationHubs_GetPnsCredentials": {
+            "main": "./lib/actions/NotificationHubs_GetPnsCredentials.js",
+            "title": "Lists the PNS Credentials associated with a notification hub .",
+            "description": "Lists the PNS Credentials associated with a notification hub .",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/NotificationHubs_GetPnsCredentials.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

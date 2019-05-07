@@ -1,0 +1,184 @@
+{
+    "type": "object",
+    "properties": {
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "namespaceName": {
+            "required": true,
+            "type": "string"
+        },
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "allOf": [
+                {
+                    "properties": {
+                        "id": {
+                            "description": "Resource Id",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "location": {
+                            "description": "Resource location",
+                            "type": "string"
+                        },
+                        "name": {
+                            "description": "Resource name",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "sku": {
+                            "description": "The sku of the created namespace",
+                            "properties": {
+                                "capacity": {
+                                    "description": "The capacity of the resource",
+                                    "type": "integer"
+                                },
+                                "family": {
+                                    "description": "The Sku Family",
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "description": "Name of the notification hub sku",
+                                    "enum": [
+                                        "Free",
+                                        "Basic",
+                                        "Standard"
+                                    ],
+                                    "type": "string",
+                                    "x-ms-enum": {
+                                        "modelAsString": true,
+                                        "name": "SkuName"
+                                    }
+                                },
+                                "size": {
+                                    "description": "The Sku size",
+                                    "type": "string"
+                                },
+                                "tier": {
+                                    "description": "The tier of particular sku",
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "name"
+                            ],
+                            "type": "object"
+                        },
+                        "tags": {
+                            "additionalProperties": {
+                                "type": "string"
+                            },
+                            "description": "Resource tags",
+                            "type": "object"
+                        },
+                        "type": {
+                            "description": "Resource type",
+                            "readOnly": true,
+                            "type": "string"
+                        }
+                    },
+                    "x-ms-azure-resource": true,
+                    "type": "object"
+                }
+            ],
+            "description": "Parameters supplied to the CreateOrUpdate Namespace operation.",
+            "properties": {
+                "properties": {
+                    "description": "Properties of the Namespace.",
+                    "x-ms-client-flatten": true,
+                    "properties": {
+                        "createdAt": {
+                            "description": "The time the namespace was created.",
+                            "format": "date-time",
+                            "type": "string"
+                        },
+                        "critical": {
+                            "description": "Whether or not the namespace is set as Critical.",
+                            "type": "boolean"
+                        },
+                        "dataCenter": {
+                            "description": "Data center for the namespace",
+                            "type": "string"
+                        },
+                        "enabled": {
+                            "description": "Whether or not the namespace is currently enabled.",
+                            "type": "boolean"
+                        },
+                        "metricId": {
+                            "description": "Identifier for Azure Insights metrics",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "name": {
+                            "description": "The name of the namespace.",
+                            "type": "string"
+                        },
+                        "namespaceType": {
+                            "description": "The namespace type.",
+                            "enum": [
+                                "Messaging",
+                                "NotificationHub"
+                            ],
+                            "type": "string",
+                            "x-ms-enum": {
+                                "modelAsString": false,
+                                "name": "NamespaceType"
+                            }
+                        },
+                        "provisioningState": {
+                            "description": "Provisioning state of the Namespace.",
+                            "type": "string"
+                        },
+                        "region": {
+                            "description": "Specifies the targeted region in which the namespace should be created. It can be any of the following values: Australia EastAustralia SoutheastCentral USEast USEast US 2West USNorth Central USSouth Central USEast AsiaSoutheast AsiaBrazil SouthJapan EastJapan WestNorth EuropeWest Europe",
+                            "externalDocs": {
+                                "url": "http://msdn.microsoft.com/en-us/library/windowsazure/jj873988.aspx"
+                            },
+                            "type": "string"
+                        },
+                        "scaleUnit": {
+                            "description": "ScaleUnit where the namespace gets created",
+                            "type": "string"
+                        },
+                        "serviceBusEndpoint": {
+                            "description": "Endpoint you can use to perform NotificationHub operations.",
+                            "externalDocs": {
+                                "url": "http://msdn.microsoft.com/en-us/library/windowsazure/jj873988.aspx"
+                            },
+                            "type": "string"
+                        },
+                        "status": {
+                            "description": "Status of the namespace. It can be any of these values:1 = Created/Active2 = Creating3 = Suspended4 = Deleting",
+                            "externalDocs": {
+                                "url": "http://msdn.microsoft.com/en-us/library/windowsazure/jj873988.aspx"
+                            },
+                            "type": "string"
+                        },
+                        "subscriptionId": {
+                            "description": "The Id of the Azure subscription associated with the namespace.",
+                            "type": "string"
+                        },
+                        "updatedAt": {
+                            "description": "The time the namespace was updated.",
+                            "format": "date-time",
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "required": [
+                "location"
+            ],
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

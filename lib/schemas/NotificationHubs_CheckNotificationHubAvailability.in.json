@@ -1,0 +1,97 @@
+{
+    "type": "object",
+    "properties": {
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "namespaceName": {
+            "required": true,
+            "type": "string"
+        },
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Parameters supplied to the Check Name Availability for Namespace and NotificationHubs.",
+            "properties": {
+                "id": {
+                    "description": "Resource Id",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "isAvailiable": {
+                    "description": "True if the name is available and can be used to create new Namespace/NotificationHub. Otherwise false.",
+                    "type": "boolean"
+                },
+                "location": {
+                    "description": "Resource location",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Resource name",
+                    "type": "string"
+                },
+                "sku": {
+                    "description": "The sku of the created namespace",
+                    "properties": {
+                        "capacity": {
+                            "description": "The capacity of the resource",
+                            "type": "integer"
+                        },
+                        "family": {
+                            "description": "The Sku Family",
+                            "type": "string"
+                        },
+                        "name": {
+                            "description": "Name of the notification hub sku",
+                            "enum": [
+                                "Free",
+                                "Basic",
+                                "Standard"
+                            ],
+                            "type": "string",
+                            "x-ms-enum": {
+                                "modelAsString": true,
+                                "name": "SkuName"
+                            }
+                        },
+                        "size": {
+                            "description": "The Sku size",
+                            "type": "string"
+                        },
+                        "tier": {
+                            "description": "The tier of particular sku",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "name"
+                    ],
+                    "type": "object"
+                },
+                "tags": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Resource tags",
+                    "type": "object"
+                },
+                "type": {
+                    "description": "Resource type",
+                    "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "required": [
+                "name"
+            ],
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}
